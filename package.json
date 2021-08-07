@@ -1,7 +1,7 @@
 {
   "name": "es6-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "值得參考:[All you need to know to move from CommonJS to ECMAScript Modules (ESM) in Node.js ](https://pawelgrzybek.com/all-you-need-to-know-to-move-from-commonjs-to-ecmascript-modules-esm-in-node-js/)",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -9,5 +9,17 @@
   },
   "keywords": [],
   "author": "LOKILAUFEYSON",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kamitom/es6-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kamitom/es6-app/issues"
+  },
+  "homepage": "https://github.com/kamitom/es6-app#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "postman-request": "^2.88.1-postman.30"
+  }
 }

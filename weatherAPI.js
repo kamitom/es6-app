@@ -16,10 +16,12 @@ const weatherStackApiKey = process.env.WeatherStackAPIKey
 // const sampleLocationSapporo = `http://api.weatherstack.com/current?access_key=${weatherStackApiKey}&query=Sapporo&language=ja`
 const sampleLocationSapporo1 = `http://api.weatherstack.com/current?access_key=${weatherStackApiKey}&query=Sapporo`
 
-let answerTemp = ''
+let responseTemperature = ''
 
-const getWeatherTest = async () => {
-  request(sampleLocationSapporo1, (error, response, body) => {
+const getLocationTemperatureCallback = (targetCityName, callbackFunc) => {
+  const WeatherAPIUrl = `http://api.weatherstack.com/current?access_key=${weatherStackApiKey}&query=` + targetCityName
+
+  request(WeatherAPIUrl, (error, response, body) => {
     if (!error && response.statusCode === 200) {
       const responseJSON = JSON.parse(body)
       // console.log(response.statusCode)
@@ -29,9 +31,8 @@ const getWeatherTest = async () => {
       // console.log(responseJSON.current.temperature)
       // console.log(responseJSON.current.weather_descriptions[0])
 
-      answerTemp = `location: ${responseJSON.location.name}, temp: ${responseJSON.current.temperature}, desc: ${responseJSON.current.weather_descriptions[0]}`
-      // console.log(`Temp: ${answerTemp}`)
-      return answerTemp
+      responseTemperature = `${responseJSON.location.name}, Temperature: ${responseJSON.current.temperature}, Description: ${responseJSON.current.weather_descriptions[0]}`
+      callbackFunc(responseTemperature)
     } else {
       console.log('hoops!! Not working.')
     }
@@ -58,4 +59,4 @@ const getCovidData = async () => {
   return data
 }
 
-export { getCovidData, getWeatherTest, getLocationTemperature }
+export { getCovidData, getLocationTemperatureCallback as getWeatherTest, getLocationTemperature }

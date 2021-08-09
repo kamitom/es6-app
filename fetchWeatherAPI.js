@@ -10,6 +10,6 @@ utils.getCovidData().then(covidData => {
 //   console.log('Real Weather', `location: ${weatherData.location.name}, temperature: ${weatherData.current.temperature}, desc: ${weatherData.current.weather_descriptions}`)
 // })
 
-utils.getWeatherTest('San Francisco', (xData) => {
-  console.log('Temperature Info: ', xData)
+utils.getWeatherTest('Morioka', (fetchTheTemperature) => {
+  console.log('Temperature Info: ', fetchTheTemperature)
 })

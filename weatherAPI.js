@@ -16,8 +16,6 @@ const weatherStackApiKey = process.env.WeatherStackAPIKey
 // const sampleLocationSapporo = `http://api.weatherstack.com/current?access_key=${weatherStackApiKey}&query=Sapporo&language=ja`
 const sampleLocationSapporo1 = `http://api.weatherstack.com/current?access_key=${weatherStackApiKey}&query=Sapporo`
 
-let responseTemperature = ''
-
 const getLocationTemperatureCallback = (targetCityName, callbackFunc) => {
   const WeatherAPIUrl = `http://api.weatherstack.com/current?access_key=${weatherStackApiKey}&query=` + targetCityName
 
@@ -31,8 +29,8 @@ const getLocationTemperatureCallback = (targetCityName, callbackFunc) => {
       // console.log(responseJSON.current.temperature)
       // console.log(responseJSON.current.weather_descriptions[0])
 
-      responseTemperature = `${responseJSON.location.name}, Temperature: ${responseJSON.current.temperature}, Description: ${responseJSON.current.weather_descriptions[0]}`
-      callbackFunc(responseTemperature)
+      const replyTemperature = `${responseJSON.location.name}, Temperature: ${responseJSON.current.temperature}, Description: ${responseJSON.current.weather_descriptions[0]}`
+      callbackFunc(replyTemperature)
     } else {
       console.log('hoops!! Not working.')
     }

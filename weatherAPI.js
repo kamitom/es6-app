@@ -1,11 +1,17 @@
 // Recreate missing reference to require
-import { createRequire } from 'module'
 
-const require = createRequire(import.meta.url)
+// import { createRequire } from 'module'
+// const require = createRequire(import.meta.url)
+// require('dotenv').config()
+// const request = require('postman-request')
+// const fetch = require('node-fetch')
 
-require('dotenv').config()
-const request = require('postman-request')
-const fetch = require('node-fetch')
+// Recreate missing reference to require
+
+import request from 'postman-request'
+import fetch from 'node-fetch'
+import dotenv from 'dotenv'
+dotenv.config()
 
 // console.log(process.env.WeatherStackAPIKey)
 const weatherStackApiKey = process.env.WeatherStackAPIKey

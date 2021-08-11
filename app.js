@@ -2,15 +2,21 @@
 console.log('starting')
 
 setTimeout(() => {
-  console.log('2 secs')
+  console.log('2 secs up')
 }, 2000)
 
-setTimeout(() => {
-  console.log('0 sec')
-}, 0)
+const geoCode = (address, callback) => {
+  setTimeout(() => {
+    const data = {
+      latitude: address,
+      longitude: 100
+    }
 
-setTimeout(() => {
-  console.log('1 sec')
-}, 1000)
+    callback(data)
+  }, 2000)
+}
 
-console.log('stopping')
+// console.log(geoCode('tw'))
+geoCode('tw', (data2) => {
+  console.log(data2)
+})

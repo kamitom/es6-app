@@ -9,8 +9,10 @@ utils.getCovidData().then(covidData => {
 }
 )
 
-utils.getLocationTemperature('London').then(weatherData => {
+utils.getLocationTemperature('philadelphia').then(weatherData => {
   console.log('Real Weather', `location: ${weatherData.location.name}, temperature: ${weatherData.current.temperature}, desc: ${weatherData.current.weather_descriptions}`)
+}).catch(error => {
+  console.log('low-level OS error: ', error)
 })
 
 utils.getWeatherTest('sapporo', (fetchTheTemperature) => {

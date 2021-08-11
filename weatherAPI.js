@@ -21,7 +21,7 @@ const getLocationTemperatureCallback = (targetCityName, callbackFunc) => {
 
   request(WeatherAPIUrl, (error, response, body) => {
     if (error) {
-      console.log('lower level OS error: ', error)
+      console.log('low-level OS errors: ', error)
     } else if (JSON.parse(body).success === false) {
       console.log('API error:', JSON.parse(body).error.info)
     } else if (!error && response.statusCode === 200) {
@@ -42,7 +42,7 @@ const getLocationTemperature = async (locationName) => {
     // console.log('data: ', realData)
     return data
   } catch (error) {
-    console.log('hoops! error: ', error)
+    console.log('hoops! low-level errors: ', error)
   }
 }
 

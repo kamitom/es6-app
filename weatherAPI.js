@@ -29,13 +29,15 @@ const getLocationTemperatureCallback = (targetCityName, callbackFunc) => {
   console.log('WeatherStack Callback Processing...')
   request(WeatherAPIUrl, (error, response, body) => {
     if (error) {
-      console.log('low-level OS errors: ', error)
+      // console.log('low-level OS errors: ', error)
+      callbackFunc(error, undefined)
     } else if (JSON.parse(body).success === false) {
-      console.log('API error:', JSON.parse(body).error.info)
+      callbackFunc(JSON.parse(body).error.info, undefined)
+      // console.log('API error:', JSON.parse(body).error.info)
     } else if (!error && response.statusCode === 200) {
       const responseJSON = JSON.parse(body)
       const replyTemperature = `${responseJSON.location.name}, Temperature: ${responseJSON.current.temperature}, Description: ${responseJSON.current.weather_descriptions[0]}`
-      callbackFunc(replyTemperature)
+      callbackFunc(undefined, replyTemperature)
     }
   })
 }

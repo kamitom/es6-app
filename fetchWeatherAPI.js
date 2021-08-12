@@ -15,8 +15,9 @@ utils.getWeaStackPromises('philadelphia').then(weatherData => {
   console.log('low-level OS error: ', error)
 })
 
-utils.getWeatherStackCallback('sapporo', (fetchTheTemperature) => {
-  console.log('WeatherStack Callback Info: ', fetchTheTemperature)
+utils.getWeatherStackCallback('xxyyzz', (error, data) => {
+  console.log('WeatherStack Callback Info: ', data)
+  console.log('WeatherStack Callback Error: ', error)
 })
 
 utils.openMapAPI('niigata').then((openReturn) => {

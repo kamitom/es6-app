@@ -15,6 +15,7 @@ dotenv.config()
 
 // console.log(process.env.WeatherStackAPIKey)
 const weatherStackApiKey = process.env.WeatherStackAPIKey
+const openApiKey = process.env.openWeatherMapAPIKey
 
 // const sampleLocationLosAngeles = `http://api.weatherstack.com/current?access_key=${weatherStackApiKey}&query=Los%20Angeles`
 // const sampleLocationNewYork = `http://api.weatherstack.com/current?access_key=${weatherStackApiKey}&query=New%20York`
@@ -53,7 +54,7 @@ const getLocationTemperature = async (locationName) => {
 }
 
 const getCovidData = async () => {
-  console.log('index.html 10 | Processing...')
+  console.log('index.html 10 | covid-19 Processing...')
 
   try {
     const request = await fetch('https://covid19.mathdro.id/api')
@@ -65,4 +66,13 @@ const getCovidData = async () => {
   }
 }
 
-export { getCovidData, getLocationTemperatureCallback as getWeatherTest, getLocationTemperature }
+const getOpenWeatherMapAPI = async (openLocation) => {
+  console.log('OpenWeatherData processing...')
+  const openUrl = `http://api.openweathermap.org/data/2.5/weather?q=${openLocation}&appid=${openApiKey}`
+
+  const rq = await fetch(openUrl)
+  const openData = await rq.json()
+  return openData
+}
+
+export { getCovidData, getLocationTemperatureCallback as getWeatherTest, getLocationTemperature, getOpenWeatherMapAPI as openMapAPI }

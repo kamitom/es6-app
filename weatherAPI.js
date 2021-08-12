@@ -68,7 +68,7 @@ const getCovidData = async () => {
 
 const getOpenWeatherMapAPI = async (openLocation) => {
   console.log('OpenWeatherData processing...')
-  const openUrl = `http://api.openweathermap.org/data/2.5/weather?q=${openLocation}&appid=${openApiKey}`
+  const openUrl = `http://api.openweathermap.org/data/2.5/weather?q=${openLocation}&units=metric&appid=${openApiKey}`
 
   const rq = await fetch(openUrl)
   const openData = await rq.json()

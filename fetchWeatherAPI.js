@@ -22,7 +22,7 @@ utils.getCovidData().then(covidData => {
 utils.openMapAPI('niigata').then((openReturn) => {
   console.log('open return: ', openReturn)
 
-  const openAns = `Location: ${openReturn.name}, Temperature(fahrenheit): ${openReturn.main.temp}, Deacription: ${openReturn.weather[0].description}`
+  const openAns = `Location: ${openReturn.name}, Temperature: ${openReturn.main.temp}, Description: ${openReturn.weather[0].description}`
   console.log('human readable: ', openAns)
 }).catch((error) => {
   console.log('open error: ', error)

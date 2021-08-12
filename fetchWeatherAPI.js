@@ -15,7 +15,7 @@ utils.getWeaStackPromises('philadelphia').then(weatherData => {
   console.log('low-level OS error: ', error)
 })
 
-utils.getWeatherStackCallback('xxyyzz', (error, data) => {
+utils.getWeatherStackCallback('kyoto', (error, data) => {
   console.log('WeatherStack Callback Info: ', data)
   console.log('WeatherStack Callback Error: ', error)
 })
@@ -23,8 +23,8 @@ utils.getWeatherStackCallback('xxyyzz', (error, data) => {
 utils.openMapAPI('niigata').then((openReturn) => {
   // console.log('open return: ', openReturn)
 
-  const openAns = `${openReturn.name}, Temperature: ${openReturn.main.temp}, Description: ${openReturn.weather[0].description}`
-  console.log('OpenWeatherMapPromises Info: ', openAns)
+  // const openAns = `${openReturn.name}, Temperature: ${openReturn.main.temp}, Description: ${openReturn.weather[0].description}`
+  console.log('OpenWeatherMapPromises Info: ', openReturn)
 }).catch((error) => {
   console.log('open error: ', error)
 })

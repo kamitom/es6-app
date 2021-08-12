@@ -1,4 +1,4 @@
-import * as utils from './weatherAPI.js'
+import * as utils from './utils/weatherAPI.js'
 
 utils.getCovidData().then(covidData => {
   console.log('confirmed', covidData.confirmed.value)
@@ -20,11 +20,10 @@ utils.getWeatherStackCallback('kyoto', (error, data) => {
   console.log('WeatherStack Callback Error: ', error)
 })
 
-utils.openMapAPI('niigata').then((openReturn) => {
-  // console.log('open return: ', openReturn)
-
-  // const openAns = `${openReturn.name}, Temperature: ${openReturn.main.temp}, Description: ${openReturn.weather[0].description}`
-  console.log('OpenWeatherMapPromises Info: ', openReturn)
+utils.openMapAPI('kyoto').then((openReturn) => {
+  // con÷sole.log('OpenWeatherMapPromises Info: ', openReturn)
+  const openAns = `${openReturn.name}, Temperature: ${openReturn.main.temp}, Description: ${openReturn.weather[0].description}`
+  console.log('OpenWeatherMapPromises Info: ', openAns)
 }).catch((error) => {
-  console.log('open error: ', error)
+  console.log('OpenWeatherMapPromises Error: ', error)
 })

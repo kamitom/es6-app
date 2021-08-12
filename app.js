@@ -12,11 +12,14 @@ const geoCode = (address, callback) => {
       longitude: 100
     }
 
-    callback(data)
+    // callback(data)
+    return data
   }, 2000)
 }
 
 // console.log(geoCode('tw'))
+
+
 geoCode('tw', (data2) => {
   console.log(data2)
 })

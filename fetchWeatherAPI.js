@@ -9,21 +9,21 @@ utils.getCovidData().then(covidData => {
 }
 )
 
-// utils.getLocationTemperature('philadelphia').then(weatherData => {
-//   console.log('Real Weather', `location: ${weatherData.location.name}, temperature: ${weatherData.current.temperature}, desc: ${weatherData.current.weather_descriptions}`)
-// }).catch(error => {
-//   console.log('low-level OS error: ', error)
-// })
+utils.getWeaStackPromises('philadelphia').then(weatherData => {
+  console.log('WeatherStack Promises Info: ', `${weatherData.location.name}, temperature: ${weatherData.current.temperature}, desc: ${weatherData.current.weather_descriptions}`)
+}).catch(error => {
+  console.log('low-level OS error: ', error)
+})
 
-// utils.getWeatherTest('sapporo', (fetchTheTemperature) => {
-//   console.log('Currently temperature Info: ', fetchTheTemperature)
-// })
+utils.getWeatherStackCallback('sapporo', (fetchTheTemperature) => {
+  console.log('WeatherStack Callback Info: ', fetchTheTemperature)
+})
 
 utils.openMapAPI('niigata').then((openReturn) => {
-  console.log('open return: ', openReturn)
+  // console.log('open return: ', openReturn)
 
-  const openAns = `Location: ${openReturn.name}, Temperature: ${openReturn.main.temp}, Description: ${openReturn.weather[0].description}`
-  console.log('human readable: ', openAns)
+  const openAns = `${openReturn.name}, Temperature: ${openReturn.main.temp}, Description: ${openReturn.weather[0].description}`
+  console.log('OpenWeatherMapPromises Info: ', openAns)
 }).catch((error) => {
   console.log('open error: ', error)
 })

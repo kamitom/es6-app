@@ -1,4 +1,4 @@
-// Recreate missing reference to require
+// Recreate missing reference to require begin
 
 // import { createRequire } from 'module'
 // const require = createRequire(import.meta.url)
@@ -6,7 +6,7 @@
 // const request = require('postman-request')
 // const fetch = require('node-fetch')
 
-// Recreate missing reference to require
+// Recreate missing reference to require end
 
 import request from 'postman-request'
 import fetch from 'node-fetch'
@@ -26,6 +26,7 @@ const openApiKey = process.env.openWeatherMapAPIKey
 const getLocationTemperatureCallback = (targetCityName, callbackFunc) => {
   const WeatherAPIUrl = `http://api.weatherstack.com/current?access_key=${weatherStackApiKey}&query=` + targetCityName
 
+  console.log('WeatherStack Callback Processing...')
   request(WeatherAPIUrl, (error, response, body) => {
     if (error) {
       console.log('low-level OS errors: ', error)
@@ -39,9 +40,11 @@ const getLocationTemperatureCallback = (targetCityName, callbackFunc) => {
   })
 }
 
-const getLocationTemperature = async (locationName) => {
+const getWeatherStackPromises = async (locationName) => {
+  console.log('WeatherStack Pormises Processing...')
   try {
-    const WeatherAPIUrl2 = `http://api.weatherstack.com/current?access_key=${weatherStackApiKey}&query=` + locationName
+    const securityLicationName = encodeURIComponent(locationName)
+    const WeatherAPIUrl2 = `http://api.weatherstack.com/current?access_key=${weatherStackApiKey}&query=` + securityLicationName
 
     const request = await fetch(WeatherAPIUrl2)
     const data = await request.json()
@@ -67,12 +70,13 @@ const getCovidData = async () => {
 }
 
 const getOpenWeatherMapAPI = async (openLocation) => {
-  console.log('OpenWeatherData processing...')
-  const openUrl = `http://api.openweathermap.org/data/2.5/weather?q=${openLocation}&units=metric&appid=${openApiKey}`
+  console.log('OpenWeatherData Processing...')
+  const securityLocation = encodeURIComponent(openLocation)
+  const openUrl = `http://api.openweathermap.org/data/2.5/weather?q=${securityLocation}&units=metric&appid=${openApiKey}`
 
   const rq = await fetch(openUrl)
   const openData = await rq.json()
   return openData
 }
 
-export { getCovidData, getLocationTemperatureCallback as getWeatherTest, getLocationTemperature, getOpenWeatherMapAPI as openMapAPI }
+export { getCovidData, getLocationTemperatureCallback as getWeatherStackCallback, getWeatherStackPromises as getWeaStackPromises, getOpenWeatherMapAPI as openMapAPI }
